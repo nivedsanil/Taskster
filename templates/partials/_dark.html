@@ -1,0 +1,26 @@
+<p class="text-center">Dark Theme</p>
+    <div id="toggles">
+      
+      <input type="checkbox" name="checkbox1" id="checkbox1" class="ios-toggle" onchange="seecheck()" autocomplete="on"/>
+      <label for="checkbox1" class="checkbox-label" data-off="off" data-on="on"></label>
+    </div>
+
+  <script type="text/javascript">
+
+  var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
+  $checkboxes = $("#toggles :checkbox");
+
+  $checkboxes.on("change", function(){
+    $checkboxes.each(function(){
+      checkboxValues[this.id] = this.checked;
+    });
+    
+    localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+  });
+
+  // On page load
+  $.each(checkboxValues, function(key, value) {
+    $("#" + key).prop('checked', value);
+  });
+
+</script>

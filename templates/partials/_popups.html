@@ -1,0 +1,82 @@
+<!-- Pop up for add task -->
+{% load static %}
+<div id="modal-wrapper" class="modal" name="dark">
+    <form class="modal-content animate grey-back" action="{% url 'addtask' %}" method="POST">
+      
+      {% csrf_token %}
+      <div class="container">
+
+        <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+         
+
+          <h3 class="text-center p-3">Add new task</h3>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Title</label>
+              <input type="text" class="form-control" id="exampletext1" name="title">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Description</label>
+              <textarea type="text" rows="10" class="form-control" id="exampleInputPassword1" name="description"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+      </div>
+      
+    </form>
+    
+  </div>
+
+<!-- Add Notes -->
+  <div id="modal-wrapper2" class="modal" name="dark">
+    <form class="modal-content animate grey-back" action="{% url 'addnote' %}" method="POST">
+      {% csrf_token %}
+      <div class="container">
+
+        <span onclick="document.getElementById('modal-wrapper2').style.display='none'" class="close" title="Close PopUp">&times;</span>
+        
+        <h3 class="text-center p-3">Add new note</h3>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Title</label>
+            <input type="text" class="form-control" id="exampletext2" name="title">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Description</label>
+            <textarea type="text" rows="10" class="form-control" id="exampleInputPassword2" name="description"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Submit</button>
+        
+      </div>
+      
+    </form>
+    
+  </div>
+
+   <!-- Pop up for update -->
+
+   <div id="modal-wrapper3" class="modal" name="dark">
+    
+    {% for task in edittask %}
+      <form class="modal-content animate grey-back" action="/action_page.php">
+        {%csrf_token%}
+        <div class="container">
+
+          <span onclick="document.getElementById('modal-wrapper3').style.display='none'" class="close" title="Close PopUp">&times;</span>
+          
+          <h3 class="text-center p-3">Edit</h3>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Title</label>
+              <input type="text" class="form-control" id="exampletext3" value={{task.title}}>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Description</label>
+              <textarea type="text" rows="10" class="form-control" id="exampleInputPassword3" value="{{task.description}}"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    {%endfor%}
+    
+  </div>

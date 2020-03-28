@@ -1,0 +1,77 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Sign Up</title>
+</head>
+<body class="grey-back">
+
+
+    <div class="container">
+
+        <div class="head mt-5">
+            <h1 class="text-center">Registration</h1>
+            <p class="lead text-center">Lets sign you up!</p>
+        </div>
+        
+        <div class="row">
+         
+          <div class="col-md-4 offset-md-4">
+            <div class="card form-holder">
+                <div class="card-body">
+                    {% include 'partials/_alerts.html' %}
+                    <h1>Sign Up</h1>
+                    <form action="{% url 'signup' %}" method="POST">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="first_name" class="form-control" placeholder="First Name"/>
+                     </div>
+
+                     <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" class="form-control" placeholder="Last Name"/>
+                     </div>
+
+                     <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Username"/>
+                     </div>
+
+                     <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email"/>
+                     </div>
+
+                     <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Username"/>
+                     </div>
+
+                     <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password2" class="form-control" placeholder="Username"/>
+                     </div>
+
+                    <div class="row">
+                        <div class="col-4 text-right">
+                        <input type="submit" class="btn btn-primary" value=" Sign Up " />
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

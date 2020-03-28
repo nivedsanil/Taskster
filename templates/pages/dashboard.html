@@ -1,0 +1,70 @@
+<!-- Taskster -->
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+  <!-- Current Tasks -->
+
+  <div id="current-tasks">
+    <div class="row">
+        <div class="col-lg-7">
+            <!-- white -->
+            <div class="task-container white row" name="light">
+                <div class="col-lg-12">
+                    <h3 class="pb-2">Current Tasks</h3>
+
+                    {% for tasks in task %}
+    
+                        <form action="{% url 'comptask' tasks.id %}" method="POST" class="pb-3">
+                            <!-- grey-back -->
+                            {%csrf_token%}
+                            <div class="task-item grey-back" name="dark">
+                                <input type="checkbox" aria-label="" onChange="this.form.submit()" > {{tasks.title}}
+                                <span class="float-right options">
+                                    <a href="{% url 'deltask' tasks.id %}">Delete</a>
+                                    |
+                                    <button type="button" class="btn btn-link" onclick="document.getElementById('modal-wrapper3').style.display='block'" href="{% url 'edittask' tasks.id%}">Edit</button>
+                                </span>
+                                
+                            </div>
+                        </form>
+
+                    {%endfor%}
+
+                </div>
+            </div>
+
+            <!-- white  -->
+
+            
+                <div class="task-container row white" name="light">
+                    <div class="col-lg-12">
+                        <h3 class="pb-2">Notes</h3>
+                        {% for notes in note %}
+                        <!-- grey-back -->
+                            <div class="task-item grey-back mb-3" name="dark">
+                                <a href="{% url 'viewnote' notes.id%}" class="">{{notes.title}}</a>
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            
+        </div>
+
+        <!-- white -->
+
+        <div class="col-lg-offset-1 col-lg-4 right task-container white" name="light">
+
+            <h3 class="pb-2">Completed Tasks</h3>
+
+                <!-- grey-back -->
+                {%for comptasks in comptask%}
+                    <div class="task-item grey-back mb-3" name="dark">
+                        <p>{{comptasks.title}}</p>
+                    </div>
+                {%endfor%}
+        </div>
+    </div>
+  </div>
+{%endblock%}

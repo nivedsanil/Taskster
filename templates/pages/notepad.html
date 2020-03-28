@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+  <!-- Title head -->
+
+  <div class="white note-item" name="light">
+    <h3> {{viewnote.title}}</h3>
+    <p class="details">Created on <i>{{viewnote.date}}</i></p>
+  </div>
+
+  <!-- Title Content -->
+
+  <div class="white note-item" name="light">
+      <p>
+          {{viewnote.description}}
+      </p>
+    
+  </div>
+
+  <div class="text-center mb-5">
+    <a class="btn btn-danger" href="{% url 'delnote' viewnote.id %}">Delete note</a>
+    <button type="button" class="text-center btn btn-success" onclick="document.getElementById('modal-wrapper3').style.display='block'">Edit</button>
+</div>
+{%endblock%}
